@@ -13,4 +13,12 @@ public class UserService {
     public List<User> getAll() {
         return userRepository.getAll();
     }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("User with this email not exist"));
+    }
+
+    public void add(User user) {
+        userRepository.add(user);
+    }
 }
