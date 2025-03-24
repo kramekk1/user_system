@@ -19,6 +19,8 @@ public class UserService {
     }
 
     public void add(User user) {
+        UserValidator.validateUser(user);
+        UserValidator.validateEmailDuplicate(user.getEmail(), userRepository);
         userRepository.add(user);
     }
 
@@ -28,6 +30,8 @@ public class UserService {
     }
 
     public void editByEmail(String email, User newUser) {
+        UserValidator.validateUser(newUser);
+        UserValidator.validateEmailDuplicate(newUser.getEmail(), userRepository);
         User user = userRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("User with this email not exits"));
         userRepository.edit(user, newUser);
     }

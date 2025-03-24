@@ -31,6 +31,7 @@ public class UserRepository {
     }
 
     public void edit(User user, User newUser) {
+        user.setEmail(newUser.getEmail());
         user.setPassword(newUser.getPassword());
         user.setName(newUser.getName());
         user.setLastName(newUser.getLastName());
