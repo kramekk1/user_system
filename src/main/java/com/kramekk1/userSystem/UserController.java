@@ -33,6 +33,12 @@ public class UserController {
     @DeleteMapping("/{email}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable String email) {
-        userService.delete(email);
+        userService.deleteByEmail(email);
+    }
+
+    @PutMapping("/{email}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void editByEmail(@PathVariable String email, @RequestBody User newUser) {
+        userService.editByEmail(email, newUser);
     }
 }
