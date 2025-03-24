@@ -21,4 +21,9 @@ public class UserService {
     public void add(User user) {
         userRepository.add(user);
     }
+
+    public void delete(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("User with this email not exist"));
+        userRepository.delete(user);
+    }
 }

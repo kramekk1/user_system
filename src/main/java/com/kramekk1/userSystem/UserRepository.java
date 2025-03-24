@@ -25,4 +25,8 @@ public class UserRepository {
     public void add(User user) {
         userList.add(user);
     }
+
+    public void delete(User user) {
+        userList.removeIf(user::equals);
+    }
 }
