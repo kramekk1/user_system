@@ -18,17 +18,21 @@ public class UserController {
         return userService.getAll();
     }
 
-    @GetMapping
-    @RequestMapping("/{email}")
+    @GetMapping("/{email}")
     public User getByEmail(@PathVariable String email) {
         return userService.findByEmail(email);
     }
 
     @PostMapping
-    @RequestMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public User add(@RequestBody User user) {
         userService.add(user);
         return user;
+    }
+
+    @DeleteMapping("/{email}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable String email) {
+        userService.delete(email);
     }
 }
