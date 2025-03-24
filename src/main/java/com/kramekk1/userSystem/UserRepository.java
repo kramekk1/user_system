@@ -29,4 +29,12 @@ public class UserRepository {
     public void delete(User user) {
         userList.removeIf(user::equals);
     }
+
+    public void edit(User user, User newUser) {
+        user.setPassword(newUser.getPassword());
+        user.setName(newUser.getName());
+        user.setLastName(newUser.getLastName());
+        user.setAge(newUser.getAge());
+        user.setBirthday(newUser.getBirthday());
+    }
 }

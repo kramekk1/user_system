@@ -22,8 +22,13 @@ public class UserService {
         userRepository.add(user);
     }
 
-    public void delete(String email) {
+    public void deleteByEmail(String email) {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("User with this email not exist"));
         userRepository.delete(user);
+    }
+
+    public void editByEmail(String email, User newUser) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("User with this email not exits"));
+        userRepository.edit(user, newUser);
     }
 }
